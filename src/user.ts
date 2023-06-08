@@ -3,10 +3,10 @@ export interface BaseUserInterface {
     firstName: string,
     lastName: string,
     zipCode: string,
-    bio: string | null,
-    hobbies: string | null,
-    interests: string | null,
-    friendRadius: number | null;
+    bio: string,
+    hobbies: string,
+    interests: string,
+    friendRadius: number;
   }
   export interface User extends BaseUserInterface {
     password:string,

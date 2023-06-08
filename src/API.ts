@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { User } from "./App";
+import { UserFormData } from "./user";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
@@ -33,7 +33,7 @@ export class FriendlyApi {
 
   // Individual API routes
 
-  static async registerUser(user: User) {
+  static async registerUser(user: UserFormData) {
     let res = await this.request(`auth/register`, user, "post");
     return res.token;
   }

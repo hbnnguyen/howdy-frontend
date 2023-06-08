@@ -54,9 +54,13 @@ export function UserRegistrationForm({ register }: UserRegistrationFormPropsInte
 
   /** Handle form submit. */
   async function handleSubmit(evt: React.FormEvent) {
-    evt.preventDefault();
-    await register(formData);
     console.log("uhhh submit????");
+    evt.preventDefault();
+    try {
+      await register(formData);
+    } catch (err) {
+      console.log("bro what have you done")
+    }
     // navigate("/");
   }
 
@@ -170,6 +174,11 @@ export function UserRegistrationForm({ register }: UserRegistrationFormPropsInte
           <label htmlFor="profilePic-input">Profile Picture:</label>
           <input name="profilePic" id="profilePic-input" type="file" onChange={handleChange} />
         </div>
+
+        <div>
+          <button className="submit-btn">Register</button>
+        </div>
+
       </form>
     </div>
   );
