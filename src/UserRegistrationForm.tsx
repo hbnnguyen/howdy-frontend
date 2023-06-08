@@ -16,6 +16,8 @@ export function UserRegistrationForm({ register }) {
     friendRadius: ""
   });
 
+  //TODO: figure out type
+
   /** Handle form change. */
   function handleChange(evt) {
     const fieldName = evt.target.name;
