@@ -2,21 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import { UserRegistrationForm } from './UserRegistrationForm';
 import { FriendlyApi } from './API';
-import userContext from "./userContext";
-
-
-
-export interface User {
-  email: string,
-  password:string,
-  firstName: string,
-  lastName: string,
-  zipCode: string,
-  bio: string | null,
-  hobbies: string | null,
-  interests: string | null,
-  friendRadius: number | null;
-}
+import { UserFormData } from './user';
+// import userContext from "./userContext";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
@@ -25,7 +12,7 @@ function App() {
     isLoading: true
   });
 
-  async function register(user: User) {
+  async function register(user: UserFormData) {
     const newToken = await FriendlyApi.registerUser(user)
     setToken(newToken);
     localStorage.setItem("token", newToken);

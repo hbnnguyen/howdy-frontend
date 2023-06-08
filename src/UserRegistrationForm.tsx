@@ -1,39 +1,63 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { UserFormData } from "./user";
+// import { useNavigate } from "react-router-dom";
 
-export function UserRegistrationForm({ register }) {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-    zipCode: "",
-    bio: "",
-    hobbies: "",
-    interests: "",
-    friendRadius: ""
-  });
+interface UserRegistrationFormPropsInterface {
+  register: (user: UserFormData) => Promise<void>;
+}
 
-  //TODO: figure out type
+const formInitialState: UserFormData = {
+  email: "",
+  password: "",
+  firstName: "",
+  lastName: "",
+  zipCode: "",
+  bio: "",
+  hobbies: "",
+  interests: "",
+  friendRadius: 10,
+  profilePic: undefined
+};
+
+export function UserRegistrationForm({ register }: UserRegistrationFormPropsInterface) {
+  // const navigate = useNavigate();
+
+  const [formData, setFormData] = useState(formInitialState);
+
+  function handleFileSelect(evt: React.ChangeEvent<HTMLInputElement>) {
+    if (!evt.target.files || evt.target.files.length === 0) {
+      setFormData(oldData => ({
+        ...oldData,
+        profilePic: undefined
+      }));
+
+      return;
+    }
+
+    const file = evt.target.files[0];
+
+    setFormData(oldData => ({
+      ...oldData,
+      profilePic: file
+    }));
+  }
 
   /** Handle form change. */
-  function handleChange(evt) {
-    const fieldName = evt.target.name;
-    const value = evt.target.value;
-
-    setFormData(currData => {
-      currData[fieldName] = value;
-      return { ...currData };
-    });
+  function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = evt.target;
+    setFormData(oldData => ({
+      ...oldData,
+      [name]: value,
+    }));
   }
 
   /** Handle form submit. */
-  async function handleSubmit(evt) {
+  async function handleSubmit(evt: React.FormEvent) {
     evt.preventDefault();
     await register(formData);
-    navigate("/");
+    console.log("uhhh submit????");
+    // navigate("/");
   }
 
   return (
@@ -86,6 +110,8 @@ export function UserRegistrationForm({ register }) {
         <div>
           <label htmlFor="zipCode-input">Zip Code:</label>
           <input
+            min={10000}
+            max={99999}
             type="number"
             name="zipCode"
             id="zipCode-input"
@@ -135,9 +161,18 @@ export function UserRegistrationForm({ register }) {
             id="friendRadius-input"
             value={formData.friendRadius}
             onChange={handleChange}
+            min={1}
+            max={100}
           />
+        </div>
+
+        <div>
+          <label htmlFor="profilePic-input">Profile Picture:</label>
+          <input name="profilePic" id="profilePic-input" type="file" onChange={handleChange} />
         </div>
       </form>
     </div>
   );
 }
+
+//FIXME: min/max numbers ???
