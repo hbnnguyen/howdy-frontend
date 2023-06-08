@@ -9,10 +9,9 @@ export interface BaseUserInterface {
     friendRadius: number;
   }
   export interface User extends BaseUserInterface {
-    password:string,
+    imageKey: string
   }
 
-  export interface UserFormData extends User {
+  export interface UserFormData extends BaseUserInterface {
     password:string,
-    profilePic?: File
   }

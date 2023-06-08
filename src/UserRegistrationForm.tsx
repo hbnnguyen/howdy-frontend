@@ -17,7 +17,6 @@ const formInitialState: UserFormData = {
   hobbies: "",
   interests: "",
   friendRadius: 10,
-  profilePic: undefined
 };
 
 export function UserRegistrationForm({ register }: UserRegistrationFormPropsInterface) {
@@ -170,10 +169,10 @@ export function UserRegistrationForm({ register }: UserRegistrationFormPropsInte
           />
         </div>
 
-        <div>
+        {/* <div>
           <label htmlFor="profilePic-input">Profile Picture:</label>
           <input name="profilePic" id="profilePic-input" type="file" onChange={handleChange} />
-        </div>
+        </div> */}
 
         <div>
           <button className="submit-btn">Register</button>

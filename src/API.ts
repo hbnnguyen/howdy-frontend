@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { UserFormData } from "./user";
+import { User, UserFormData } from "./user";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
@@ -9,6 +9,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
  */
 
 export class FriendlyApi {
+
   static token?: string;
 
   static async request(endpoint: string, data = {}, method = "get") {
@@ -23,7 +24,7 @@ export class FriendlyApi {
     } catch (err) {
       if (axios.isAxiosError(err)) {
         console.error("API Error:", err.response);
-        let message = err.response?.data.error.message;
+        const message = err.response?.data.error.message;
         throw Array.isArray(message) ? message : [message];
       } else {
         console.error(err);
@@ -33,8 +34,13 @@ export class FriendlyApi {
 
   // Individual API routes
 
-  static async registerUser(user: UserFormData) {
-    let res = await this.request(`auth/register`, user, "post");
+  static async registerUser(user: UserFormData): Promise<string> {
+    const res = await this.request(`auth/register`, user, "post");
+    return res.token;
+  }
+
+  static async getUser(id: string): Promise<User> {
+    const res = await this.request(`users/`, id, "get");
     return res.token;
   }
 
