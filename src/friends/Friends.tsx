@@ -9,5 +9,5 @@ function Friends() {
     const [friends, setFriends] = useState([]);
     const { user } = useContext(userContext);
 
-    useEffect(function getFriends)
+    // useEffect(function getFriends)
 }

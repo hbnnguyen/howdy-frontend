@@ -4,6 +4,8 @@ import { useContext } from 'react';
 import { User } from "../user";
 import { FriendlyApi } from "../API";
 import UserCard from "./UserCard";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Matching() {
   const [potentialMatch, setPotentialMatch] = useState<User | undefined>(undefined);
@@ -20,8 +22,12 @@ function Matching() {
   }, []);
 
   async function onClickLikeDislike(liked: boolean) {
-    await FriendlyApi.likeOrDislikeUser(potentialMatch!.id, liked);
+    const becameFriends = await FriendlyApi.likeOrDislikeUser(potentialMatch!.id, liked);
     //TODO: handle match?????
+
+    if (becameFriends) {
+      toast("You've made a new friend!");
+    }
 
     getPotentialMatch();
   }
@@ -42,6 +48,7 @@ function Matching() {
 
   return (
     <div>
+      <ToastContainer position="top-center" />
       <UserCard user={potentialMatch} />
       <div className="d-flex justify-content-center btn-group" role="group" aria-label="Basic outlined example">
         <button className="btn btn-outline-primary" onClick={() => onClickLikeDislike(false)}>REJECT</button>

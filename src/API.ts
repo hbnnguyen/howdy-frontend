@@ -55,9 +55,10 @@ export class FriendlyApi {
     return res.user
   }
 
-  static async likeOrDislikeUser(toUserId: number, liked: boolean) {
+  static async likeOrDislikeUser(toUserId: number, liked: boolean) : Promise<boolean> {
     const res = await this.request('likeDislike', {toUserId, liked}, "post")
-    //TODO: if matched, return a message to notify the users
+    console.log("res: ", res.becameFriends);
+    return res.becameFriends;
   }
 
   static async uploadProfilePic(profilePic: ProfilePicData): Promise<string> {
