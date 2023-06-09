@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { User, UserFormData } from "./user";
+import { ProfilePicData, User, UserFormData, UserLoginData } from "./user";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
 
@@ -39,9 +39,19 @@ export class FriendlyApi {
     return res.token;
   }
 
-  static async getUser(id: string): Promise<User> {
-    const res = await this.request(`users/`, id, "get");
+  static async loginUser(user: UserLoginData): Promise<string> {
+    const res = await this.request(`auth/token`, user, "post");
     return res.token;
+  }
+
+  static async getUser(id: number): Promise<User> {
+    const res = await this.request(`users/${id}`);
+    return res.user;
+  }
+
+  static async uploadProfilePic(uploaded_file: ProfilePicData) {
+    const res = await this.request(`users/uploadProfilePic`, uploaded_file, "post")
+    return res.success
   }
 
 }

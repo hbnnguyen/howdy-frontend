@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { UserFormData } from "./user";
-// import { useNavigate } from "react-router-dom";
+import { UserFormData } from "../user";
+import { useNavigate } from "react-router-dom";
 
 interface UserRegistrationFormPropsInterface {
   register: (user: UserFormData) => Promise<void>;
@@ -20,7 +20,7 @@ const formInitialState: UserFormData = {
 };
 
 export function UserRegistrationForm({ register }: UserRegistrationFormPropsInterface) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState(formInitialState);
 
@@ -58,9 +58,9 @@ export function UserRegistrationForm({ register }: UserRegistrationFormPropsInte
     try {
       await register(formData);
     } catch (err) {
-      console.log("bro what have you done")
+      console.log("bro what have you done");
     }
-    // navigate("/");
+    navigate("/");
   }
 
   return (

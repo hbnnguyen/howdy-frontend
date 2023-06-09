@@ -1,7 +1,11 @@
-// import { createContext } from "react";
+import { createContext } from "react";
+import { User } from "./user";
 
-// const userContext = createContext();
+interface UserInterface {
+  user: User | null | undefined;
+}
 
-// export default userContext;
+const userContext = createContext<UserInterface>({ user: null });
+// const userContext = createContext<User | undefined | null>(null);
 
-export {}
+export default userContext;

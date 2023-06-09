@@ -15,3 +15,12 @@ export interface BaseUserInterface {
   export interface UserFormData extends BaseUserInterface {
     password:string,
   }
+
+  export interface UserLoginData {
+    email: string,
+    password: string
+  }
+
+  export interface ProfilePicData {
+    image?: File
+  }
