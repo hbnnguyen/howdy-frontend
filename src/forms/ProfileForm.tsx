@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 // import userContext from "./userContext";
-import { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { ProfilePicData } from "../user";
 
@@ -60,10 +59,12 @@ export function ProfileForm({ setProfilePic }: ProfileFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="profilePic-input">Profile Picture:</label>
-      <input name="profilePic" id="profilePic-input" type="file" onChange={handleFileSelect} />
-      <button type="submit">Submit</button>
-    </form >
+    <div>
+      <form className="m-5 d-flex flex-column gap-3 text-center" onSubmit={handleSubmit}>
+      <h3>Set Profile Picture</h3>
+        <input className="form-control" name="profilePic" id="profilePic-input" type="file" onChange={handleFileSelect} />
+        <button className="w-100 submit-btn btn btn-outline-primary" type="submit">Submit</button>
+      </form >
+    </div>
   );
 }

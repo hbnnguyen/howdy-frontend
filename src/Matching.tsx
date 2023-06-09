@@ -26,6 +26,16 @@ function Matching() {
     getPotentialMatch();
   }
 
+  if (potentialMatch === null) {
+    return (
+      <div className="d-flex flex-column gap-5 m-5 text-center">
+        <h4 className="">Whoa there partner, we're all out of potential friends for now!</h4>
+        <img className="img-fluid rounded-1" src="https://i.kym-cdn.com/entries/icons/mobile/000/026/489/crying.jpg" alt="sad cat"></img>
+        <h4 className="">Check back later and make some more pals!</h4>
+      </div>
+    );
+  }
+
   if (potentialMatch === undefined) {
     return (<h4>Loading...</h4>);
   }
@@ -34,7 +44,7 @@ function Matching() {
     <div>
       <UserCard user={potentialMatch} />
       <div className="d-flex justify-content-center btn-group" role="group" aria-label="Basic outlined example">
-        <button className="btn btn-outline-primary"onClick={() => onClickLikeDislike(false)}>REJECT</button>
+        <button className="btn btn-outline-primary" onClick={() => onClickLikeDislike(false)}>REJECT</button>
         <button className="btn btn-outline-primary" onClick={() => onClickLikeDislike(true)}>FRIEND</button>
       </div>
     </div>

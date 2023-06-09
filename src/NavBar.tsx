@@ -13,52 +13,28 @@ function NavBar({ logout }: NavBarPropsInterface) {
     const { user } = useContext(userContext);
 
     function loggedOutNav() {
-        return (
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
-                <div className="container-fluid">
-                    <NavLink className="navbar-brand" to={"/"}>Friendly</NavLink>
-                    <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to={"/login"}>Log In</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to={"/register"}>Register</NavLink>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        );
+        return (<>
+            <NavLink className="nav-link" to={"/login"}>Log In</NavLink>
+            <NavLink className="nav-link" to={"/register"}>Register</NavLink>
+        </>);
     }
 
-    function loggedInNav() {
-        return (
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
-                <div className="container-fluid">
-                    <NavLink className="navbar-brand" to={"/"}>Friendly</NavLink>
-                    <div className="" id="navbarNavDropdown">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to={"/profile"}>Profile</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to={"/matching"}>Matching</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-item nav-link" to="/" onClick={logout}>Log Out</NavLink>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>);
+    function loggedIn() {
+        return (<>
+            <NavLink className="nav-link" to={"/profile"}>Profile</NavLink>
+            <NavLink className="nav-link" to={"/matching"}>Matching</NavLink>
+            <NavLink className="nav-item nav-link" to="/" onClick={logout}>Log Out</NavLink>
+        </>);
     }
 
-    if (!user) {
-        return loggedOutNav();
-    } else {
-        return loggedInNav();
-    }
+    return (
+        <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between p-2">
+            <NavLink className="nav-link mx-1 fw-bold" to={'/'}>Friendly</NavLink>
+            <div className="d-flex justify-content-end gap-3">
+                {user ? loggedIn() : loggedOutNav()}
+            </div>
+        </nav>
+    );
 }
 
 export default NavBar;
