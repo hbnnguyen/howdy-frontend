@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import { UserRegistrationForm } from './forms/UserRegistrationForm';
 import { FriendlyApi } from './API';
-import { User, UserFormData, UserLoginData } from './user';
+import { ProfilePicData, User, UserFormData, UserLoginData } from './user';
 import RoutesList from './RoutesList';
 import jwtDecode from 'jwt-decode';
 import { UserLoginForm } from './forms/UserLoginForm';
@@ -55,11 +55,28 @@ function App() {
     setToken("");
   }
 
+  async function setProfilePic(data: ProfilePicData) {
+    console.log("DATA: ", data);
+    const newImageURL = await FriendlyApi.uploadProfilePic(data);
+
+    setUser(oldUser => {
+      if (!oldUser) {
+        return oldUser;
+      }
+
+      return {
+        ...oldUser,
+        imageKey: newImageURL
+      };
+
+    });
+  }
+
   return (
     <userContext.Provider value={{ user: user }}>
       <div>
         <NavBar logout={logout} />
-        <RoutesList login={login} register={register} />
+        <RoutesList login={login} register={register} setProfilePic={setProfilePic} />
       </div>
     </userContext.Provider>
   );

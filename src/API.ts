@@ -49,9 +49,19 @@ export class FriendlyApi {
     return res.user;
   }
 
-  static async uploadProfilePic(uploaded_file: ProfilePicData) {
-    const res = await this.request(`users/uploadProfilePic`, uploaded_file, "post")
-    return res.success
+  static async uploadProfilePic(profilePic: ProfilePicData): Promise<string> {
+    //FIXME: update the local image
+    //FIXME: handle null pic ?
+
+    const formData = new FormData();
+    formData.append(
+      "image",
+      profilePic.image!,
+      profilePic.image?.name
+    );
+
+    const res = await this.request(`users/uploadProfilePic`, formData, "post");
+    return res.imageURL;
   }
 
 }

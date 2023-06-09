@@ -4,17 +4,19 @@ import { useContext } from 'react';
 import { UserLoginForm } from './forms/UserLoginForm';
 import { UserRegistrationForm } from './forms/UserRegistrationForm';
 import NavBar from './NavBar';
-import { UserFormData, UserLoginData } from './user';
+import { ProfilePicData, UserFormData, UserLoginData } from './user';
 import Home from './Home';
+import { ProfileForm } from './forms/ProfileForm';
 
 interface RoutesListPropsInterface {
   login: (user: UserLoginData) => Promise<void>,
   register: (user: UserFormData) => Promise<void>;
+  setProfilePic: (arg: ProfilePicData) => Promise<void>;
 }
 
 //TODO: fix this when routes are done
 
-function RoutesList({ login, register }: RoutesListPropsInterface) {
+function RoutesList({ login, register, setProfilePic }: RoutesListPropsInterface) {
   const { user } = useContext(userContext);
 
   function loggedOutRoutes() {
@@ -34,7 +36,7 @@ function RoutesList({ login, register }: RoutesListPropsInterface) {
       <>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path="/login" element={<UserLoginForm login={login} />} />
+          <Route path="/profile" element={<ProfileForm setProfilePic={setProfilePic} />} />
           <Route path="/register" element={<UserRegistrationForm register={register} />} />
         </Routes>
       </>
