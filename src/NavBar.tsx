@@ -23,6 +23,7 @@ function NavBar({ logout }: NavBarPropsInterface) {
         return (<>
             <NavLink className="nav-link" to={"/profile"}>Profile</NavLink>
             <NavLink className="nav-link" to={"/matching"}>Matching</NavLink>
+            <NavLink className="nav-link" to={"/friends"}>Friends</NavLink>
             <NavLink className="nav-item nav-link" to="/" onClick={logout}>Log Out</NavLink>
         </>);
     }

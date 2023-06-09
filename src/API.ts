@@ -51,13 +51,11 @@ export class FriendlyApi {
 
   static async getNextPotentialMatch() {
     const res = await this.request(`friends/nextPotential`)
-    console.log(res)
     return res.user
   }
 
   static async likeOrDislikeUser(toUserId: number, liked: boolean) : Promise<boolean> {
     const res = await this.request('likeDislike', {toUserId, liked}, "post")
-    console.log("res: ", res.becameFriends);
     return res.becameFriends;
   }
 
@@ -74,6 +72,11 @@ export class FriendlyApi {
 
     const res = await this.request(`users/uploadProfilePic`, formData, "post");
     return res.imageURL;
+  }
+
+  static async getFriends(): Promise<User[]> {
+    const res = await this.request(`friends`)
+    return res.matches
   }
 
 }
