@@ -8,7 +8,7 @@ interface UserCardPropsInterface {
 function UserCard({ user }: UserCardPropsInterface) {
     return (
         <div>
-            <img src={user.imageKey} alt="profile picture" />
+            <img src={user.imageKey} width={"200px"} height={"200px"} alt="profile" />
             <h4>{user.firstName}</h4>
             <p>{user.bio}</p>
             <p>{user.hobbies}</p>

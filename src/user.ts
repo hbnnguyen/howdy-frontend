@@ -9,6 +9,7 @@ export interface BaseUserInterface {
     friendRadius: number;
   }
   export interface User extends BaseUserInterface {
+    id: number,
     imageKey: string
   }
 
