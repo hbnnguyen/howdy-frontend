@@ -74,8 +74,8 @@ function App() {
 
   return (
     <userContext.Provider value={{ user: user }}>
-      <div>
         <NavBar logout={logout} />
+      <div className='d-flex justify-content-center'>
         <RoutesList login={login} register={register} setProfilePic={setProfilePic} />
       </div>
     </userContext.Provider>

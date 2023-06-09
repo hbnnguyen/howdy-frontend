@@ -33,9 +33,9 @@ function Matching() {
   return (
     <div>
       <UserCard user={potentialMatch} />
-      <div>
-        <button onClick={() => onClickLikeDislike(false)}>REJECT</button>
-        <button onClick={() => onClickLikeDislike(true)}>FRIEND NOW</button>
+      <div className="d-flex justify-content-center btn-group" role="group" aria-label="Basic outlined example">
+        <button className="btn btn-outline-primary"onClick={() => onClickLikeDislike(false)}>REJECT</button>
+        <button className="btn btn-outline-primary" onClick={() => onClickLikeDislike(true)}>FRIEND</button>
       </div>
     </div>
   );

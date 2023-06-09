@@ -33,38 +33,40 @@ export function UserLoginForm({ login }: UserLoginFormPropsInterface) {
     try {
       await login(formData);
     } catch (err) {
-      console.log("bro what have you done")
+      console.log("bro what have you done");
     }
     navigate("/");
   }
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email-input">Email:</label>
+      <form className="m-5 d-flex flex-column" onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="email-input">Email:</label>
           <input
             type="email"
             name="email"
             id="email-input"
             value={formData.email}
             onChange={handleChange}
+            className="form-control"
           />
         </div>
 
-        <div>
-          <label htmlFor="password-input">Password:</label>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="password-input">Password:</label>
           <input
             type="password"
             name="password"
             id="password-input"
             value={formData.password}
             onChange={handleChange}
+            className="form-control"
           />
         </div>
 
-        <div>
-          <button className="submit-btn">Login</button>
+        <div className="mb-3">
+          <button className="w-100 submit-btn btn btn-outline-primary">Login</button>
         </div>
 
       </form>

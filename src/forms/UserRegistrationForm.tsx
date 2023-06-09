@@ -65,53 +65,56 @@ export function UserRegistrationForm({ register }: UserRegistrationFormPropsInte
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email-input">Email:</label>
+      <form className="m-5 d-flex flex-column" onSubmit={handleSubmit}>
+        <div className="mb-3">
           <input
             type="email"
             name="email"
             id="email-input"
             value={formData.email}
+            className="form-control"
             onChange={handleChange}
+            placeholder="Email"
           />
         </div>
 
-        <div>
-          <label htmlFor="password-input">Password:</label>
+        <div className="mb-3">
           <input
             type="password"
             name="password"
             id="password-input"
             value={formData.password}
+            className="form-control"
             onChange={handleChange}
+            placeholder="Password"
           />
         </div>
 
-        <div>
-          <label htmlFor="firstName-input">First Name:</label>
+        <div className="mb-3">
           <input
             type="text"
             name="firstName"
             id="firstName-input"
             value={formData.firstName}
+            className="form-control"
             onChange={handleChange}
+            placeholder="First Name"
           />
         </div>
 
-        <div>
-          <label htmlFor="lastName-input">Last Name:</label>
+        <div className="mb-3">
           <input
             type="text"
             name="lastName"
             id="lastName-input"
             value={formData.lastName}
+            className="form-control"
+            placeholder="Last Name"
             onChange={handleChange}
           />
         </div>
 
-        <div>
-          <label htmlFor="zipCode-input">Zip Code:</label>
+        <div className="mb-3">
           <input
             min={10000}
             max={99999}
@@ -119,63 +122,65 @@ export function UserRegistrationForm({ register }: UserRegistrationFormPropsInte
             name="zipCode"
             id="zipCode-input"
             value={formData.zipCode}
+            className="form-control"
+            placeholder="Zip Code"
             onChange={handleChange}
           />
         </div>
 
-        <div>
-          <label htmlFor="bio-input">Bio:</label>
+        <div className="mb-3">
           <input
             type="text"
             name="bio"
             id="bio-input"
             value={formData.bio}
+            className="form-control"
+            placeholder="Bio"
             onChange={handleChange}
           />
         </div>
 
-        <div>
-          <label htmlFor="hobbies-input">Hobbies:</label>
+        <div className="mb-3">
           <input
             type="text"
             name="hobbies"
             id="hobbies-input"
             value={formData.hobbies}
+            className="form-control"
+            placeholder="Hobbies"
             onChange={handleChange}
           />
         </div>
 
-        <div>
-          <label htmlFor="interests-input">Interests:</label>
+        <div className="mb-3">
           <input
             type="text"
             name="interests"
             id="interests-input"
             value={formData.interests}
+            className="form-control"
+            placeholder="Interests"
             onChange={handleChange}
           />
         </div>
 
-        <div>
-          <label htmlFor="friendRadius-input">Friend Radius:</label>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="friendRadius-input">Friend Radius:</label>
           <input
             type="number"
             name="friendRadius"
             id="friendRadius-input"
             value={formData.friendRadius}
             onChange={handleChange}
+            placeholder="Friend Radius"
+            className="form-control"
             min={1}
             max={100}
           />
         </div>
 
-        {/* <div>
-          <label htmlFor="profilePic-input">Profile Picture:</label>
-          <input name="profilePic" id="profilePic-input" type="file" onChange={handleChange} />
-        </div> */}
-
         <div>
-          <button className="submit-btn">Register</button>
+          <button className="w-100 submit-btn btn btn-outline-primary">Register</button>
         </div>
 
       </form>
