@@ -36,7 +36,7 @@ function App() {
   }, [token]);
 
   if (user === undefined) {
-    return (<p>loading,,,</p>);
+    return (<p>Loading...</p>);
   }
 
   async function register(user: UserFormData) {

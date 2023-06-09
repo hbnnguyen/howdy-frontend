@@ -49,6 +49,17 @@ export class FriendlyApi {
     return res.user;
   }
 
+  static async getNextPotentialMatch() {
+    const res = await this.request(`friends/nextPotential`)
+    console.log(res)
+    return res.user
+  }
+
+  static async likeOrDislikeUser(toUserId: number, liked: boolean) {
+    const res = await this.request('likeDislike', {toUserId, liked}, "post")
+    //TODO: if matched, return a message to notify the users
+  }
+
   static async uploadProfilePic(profilePic: ProfilePicData): Promise<string> {
     //FIXME: update the local image
     //FIXME: handle null pic ?

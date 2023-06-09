@@ -29,6 +29,7 @@ function NavBar({ logout }: NavBarPropsInterface) {
       <NavLink to={"/"}>Friendly</NavLink>
       <div>
         <NavLink to={"/profile"}>Profile</NavLink>
+        <NavLink to={"/matching"}>Matching</NavLink>
         <NavLink className="nav-item nav-link" to="/" onClick={logout}>Log Out</NavLink>
       </div>
     </nav>);
