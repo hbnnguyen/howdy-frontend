@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import userContext from "./userContext";
+import userContext from "../userContext";
 import { useContext } from 'react';
-import { User } from "./user";
-import { FriendlyApi } from "./API";
+import { User } from "../user";
+import { FriendlyApi } from "../API";
 import UserCard from "./UserCard";
 
 function Matching() {

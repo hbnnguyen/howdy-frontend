@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { User } from './user';
+import { User } from '../user';
 
 interface UserCardPropsInterface {
     user: User;

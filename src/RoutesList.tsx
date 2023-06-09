@@ -7,7 +7,7 @@ import NavBar from './NavBar';
 import { ProfilePicData, UserFormData, UserLoginData } from './user';
 import Home from './Home';
 import { ProfileForm } from './forms/ProfileForm';
-import Matching from './Matching';
+import Matching from './matching/Matching';
 
 interface RoutesListPropsInterface {
   login: (user: UserLoginData) => Promise<void>,
@@ -38,6 +38,7 @@ function RoutesList({ login, register, setProfilePic }: RoutesListPropsInterface
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/matching' element={<Matching />} />
+          <Route path='/friends' element={<Friends />} />
           <Route path="/profile" element={<ProfileForm setProfilePic={setProfilePic} />} />
           <Route path="/register" element={<UserRegistrationForm register={register} />} />
         </Routes>
