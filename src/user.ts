@@ -1,14 +1,13 @@
 export interface BaseUserInterface {
+    username:string,
     email: string,
-    firstName: string,
-    lastName: string,
-    zipCode: string,
-    bio: string,
-    hobbies: string,
-    interests: string,
-    friendRadius: number;
+    name: string,
+    bio: string
   }
+
   export interface User extends BaseUserInterface {
+    username:string,
+    name: string;
     id: number,
     imageKey: string
   }

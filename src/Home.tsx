@@ -10,7 +10,7 @@ function Home() {
             {user &&
                 <div className='d-flex align-items-center flex-column h-100'>
                     <div className="">
-                        <h1>welcome, {user?.firstName}</h1>
+                        <h1>welcome, {user?.name}</h1>
                     </div>
                     <img className="img-fluid h-25" src={user?.imageKey} alt="profile pic" />
                 </div>

@@ -8,15 +8,11 @@ interface UserRegistrationFormPropsInterface {
 }
 
 const formInitialState: UserFormData = {
+  username: "",
   email: "",
   password: "",
-  firstName: "",
-  lastName: "",
-  zipCode: "",
-  bio: "",
-  hobbies: "",
-  interests: "",
-  friendRadius: 10,
+  name: "",
+  bio: ""
 };
 
 export function UserRegistrationForm({ register }: UserRegistrationFormPropsInterface) {
@@ -68,6 +64,18 @@ export function UserRegistrationForm({ register }: UserRegistrationFormPropsInte
       <form className="m-5 d-flex flex-column" onSubmit={handleSubmit}>
         <div className="mb-3">
           <input
+            type="text"
+            name="username"
+            id="username-input"
+            value={formData.username}
+            className="form-control"
+            onChange={handleChange}
+            placeholder="Username"
+          />
+        </div>
+
+        <div className="mb-3">
+          <input
             type="email"
             name="email"
             id="email-input"
@@ -93,38 +101,12 @@ export function UserRegistrationForm({ register }: UserRegistrationFormPropsInte
         <div className="mb-3">
           <input
             type="text"
-            name="firstName"
-            id="firstName-input"
-            value={formData.firstName}
+            name="name"
+            id="name-input"
+            value={formData.name}
             className="form-control"
             onChange={handleChange}
-            placeholder="First Name"
-          />
-        </div>
-
-        <div className="mb-3">
-          <input
-            type="text"
-            name="lastName"
-            id="lastName-input"
-            value={formData.lastName}
-            className="form-control"
-            placeholder="Last Name"
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="mb-3">
-          <input
-            min={10000}
-            max={99999}
-            type="number"
-            name="zipCode"
-            id="zipCode-input"
-            value={formData.zipCode}
-            className="form-control"
-            placeholder="Zip Code"
-            onChange={handleChange}
+            placeholder="Name"
           />
         </div>
 
@@ -137,45 +119,6 @@ export function UserRegistrationForm({ register }: UserRegistrationFormPropsInte
             className="form-control"
             placeholder="Bio"
             onChange={handleChange}
-          />
-        </div>
-
-        <div className="mb-3">
-          <input
-            type="text"
-            name="hobbies"
-            id="hobbies-input"
-            value={formData.hobbies}
-            className="form-control"
-            placeholder="Hobbies"
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="mb-3">
-          <input
-            type="text"
-            name="interests"
-            id="interests-input"
-            value={formData.interests}
-            className="form-control"
-            placeholder="Interests"
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label" htmlFor="friendRadius-input">Friend Radius:</label>
-          <input
-            type="number"
-            name="friendRadius"
-            id="friendRadius-input"
-            value={formData.friendRadius}
-            onChange={handleChange}
-            placeholder="Friend Radius"
-            className="form-control"
-            min={1}
-            max={100}
           />
         </div>
 
