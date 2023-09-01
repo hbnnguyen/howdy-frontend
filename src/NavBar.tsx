@@ -30,7 +30,10 @@ function NavBar({ logout }: NavBarPropsInterface) {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between p-2">
-            <NavLink className="nav-link mx-1 fw-bold" to={'/'}>Friendly</NavLink>
+            <NavLink className="nav-link mx-1 fw-bold" to={'/'}>
+                <img className="w-25 me-2"src="/images/smiling_cowboy.png" alt="smiling cowboy emoji"/>
+                Howdy
+            </NavLink>
             <div className="d-flex justify-content-end gap-3">
                 {user ? loggedIn() : loggedOutNav()}
             </div>

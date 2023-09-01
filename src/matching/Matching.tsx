@@ -51,8 +51,14 @@ function Matching() {
       <ToastContainer position="top-center" />
       <UserCard user={potentialMatch} />
       <div className="d-flex justify-content-center btn-group" role="group" aria-label="Basic outlined example">
-        <button className="btn btn-outline-primary" onClick={() => onClickLikeDislike(false)}>REJECT</button>
-        <button className="btn btn-outline-primary" onClick={() => onClickLikeDislike(true)}>FRIEND</button>
+        <button className="btn btn-outline-primary d-flex justify-content-around align-items-center" onClick={() => onClickLikeDislike(false)}>
+          <img className="w-25" src="/images/pensive_cowboy.png" alt="sunglasses cowboy emoji"/>
+          YEENAW
+        </button>
+        <button className="btn btn-outline-primary d-flex justify-content-around align-items-center" onClick={() => onClickLikeDislike(true)}>
+          YEEHAW
+          <img className="w-25" src="/images/sunglasses_cowboy.png" alt="sunglasses cowboy emoji"/>
+        </button>
       </div>
     </div>
   );

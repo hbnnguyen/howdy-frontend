@@ -49,6 +49,11 @@ export class FriendlyApi {
     return res.user;
   }
 
+  static async getUserByUsername(username: string): Promise<User> {
+    const res = await this.request(`users/${username}`);
+    return res.user;
+  }
+
   static async getNextPotentialMatch() {
     const res = await this.request(`friends/nextPotential`)
     return res.user
